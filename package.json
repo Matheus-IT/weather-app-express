@@ -1,0 +1,28 @@
+{
+	"name": "weather-app-express",
+	"version": "1.0.0",
+	"description": "Weather app built to learn how to consume apis in express",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Matheus-IT/weather-app-express.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Matheus-IT/weather-app-express/issues"
+	},
+	"homepage": "https://github.com/Matheus-IT/weather-app-express#readme",
+	"dependencies": {
+		"express": "^4.18.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.16",
+		"prettier": "^2.6.2"
+	}
+}
