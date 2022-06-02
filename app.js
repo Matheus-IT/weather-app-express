@@ -5,17 +5,20 @@ const app = express();
 
 app.get('/', (req, res) => {
 	const apiKey = 'b8918abe720101b4392cb8b50fc524de';
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}`;
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=${apiKey}`;
 
 	https.get(url, (response) => {
         response.on('data', (data) => {
             const weatherData = JSON.parse(data);
-            const temp = weatherData.main.temp;
+            const temperature = weatherData.main.temp;
             const weatherDescription = weatherData.weather[0].description;
+            const iconName = weatherData.weather[0].icon;
+            const iconURL = `http://openweathermap.org/img/wn/${iconName}@2x.png`;
 
-            console.log(weatherData);
-            console.log(temp);
-            console.log(weatherDescription);
+            res.write(`<p>The weather is currently${weatherDescription}</p>`);
+            res.write(`<h1>The temperature in London is ${temperature}</h1>`);
+            res.write(`<img src="${iconURL}" alt="">`);
+            res.send();
         });
 	});
 });
