@@ -8,7 +8,15 @@ app.get('/', (req, res) => {
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}`;
 
 	https.get(url, (response) => {
-		console.log(response.statusCode);
+        response.on('data', (data) => {
+            const weatherData = JSON.parse(data);
+            const temp = weatherData.main.temp;
+            const weatherDescription = weatherData.weather[0].description;
+
+            console.log(weatherData);
+            console.log(temp);
+            console.log(weatherDescription);
+        });
 	});
 });
 
